@@ -8,10 +8,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background-image: url('../src/Assets/home-bg.jpg'); /* Replace with your image path */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+      background-image: url('../src/Assets/home-bg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at top left, #2b445d, #1c1c3c);
@@ -28,8 +28,22 @@
       background: rgba(0, 0, 0, 0.8);
       position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       width: 100%;
       z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    nav .logo img {
+      height: 40px; /* Reduced size for mobile */
+      width: auto;
+    }
+
+    @media (min-width: 768px) {
+      nav .logo img {
+        height: 60px;
+      }
     }
 
     nav ul {
@@ -55,16 +69,6 @@
       color: #9b59b6;
     }
 
-    nav ul li:hover::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: #9b59b6;
-      bottom: -5px;
-      left: 0;
-    }
-
     .theme-toggle {
       cursor: pointer;
       color: white;
@@ -76,303 +80,296 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    .theme-toggle:hover {
-      background: #9b59b6;
-      color: white;
-    }
-
-    /* Responsive Navbar */
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      z-index: 1001;
     }
 
     .menu-toggle span {
       background: white;
       height: 3px;
-      margin: 5px;
+      margin: 3px;
       width: 25px;
       transition: all 0.3s;
     }
 
-    .menu-opened .menu-toggle span:nth-child(1) {
-      transform: rotate(45deg) translateY(7px);
-    }
-
-    .menu-opened .menu-toggle span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-opened .menu-toggle span:nth-child(3) {
-      transform: rotate(-45deg) translateY(-7px);
-    }
-
     .mobile-nav {
       display: none;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.9);
       position: fixed;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 100%;
-      z-index: 999;
-      padding: 20px;
-      animation: slideIn 0.5s;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      padding-top: 60px;
     }
 
     .mobile-nav ul {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100%;
+      padding: 0;
+      margin: 0;
     }
 
     .mobile-nav ul li {
       margin: 15px 0;
     }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-100%);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav ul {
-        display: none;
-      }
+    .mobile-nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
     }
 
     .hero {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
-      padding: 0 50px;
-      margin-top: 60px;
+      min-height: 100vh;
+      padding: 80px 20px 20px;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 100px 50px;
+      }
     }
 
     .hero-content {
-      max-width: 50%;
+      text-align: center;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-content {
+        text-align: left;
+        max-width: 50%;
+        margin-bottom: 0;
+      }
     }
 
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       margin: 0;
     }
 
-    .hero-content h2 {
-      font-size: 2rem;
-      color: #9b59b6;
-      margin: 20px 0;
-      min-height: 50px;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      margin: 20px 0;
-    }
-
-
-    .about-me {
-      background-color: #333;
-      color: white;
-      padding: 50px 20px;
-    }
-
-    .about-me h1 {
-      font-size: 2.5rem;
-      color: #b59eff;
-    }
-
-    .about-me p {
-      line-height: 1.8;
-      margin: 1rem 0;
-    }
-
-    .about-me ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .about-me ul li {
-      margin: 0.5rem 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .about-me ul li::before {
-      content: '\1F4A1';
-      margin-right: 10px;
-      color: #b59eff;
-    }
-
-    .about-me blockquote {
-      margin-top: 20px;
-      font-style: italic;
-      color: #b59eff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1c1c3c;
-    }
-
-    .light-theme {
-      background: white;
-      color: black;
-    }
-
-    .light-theme nav {
-      background: rgba(255, 255, 255, 0.8);
-    }
-
-    .light-theme nav ul li a {
-      color: black;
-    }
-    nav .logo img {
-      height: 60px;
-      width: auto;
+    @media (min-width: 768px) {
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
     }
 
     .profile-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .profile-container {
+        max-width: 500px;
+      }
     }
 
     .profile-container img {
-      height: 500px; /* Adjust height as needed */
-      width: 500px; /* Adjust width as needed */
-      object-fit: cover; /* Ensures the image fits perfectly */
-      border-radius: 50%; /* Makes it circular */
-      border: 5px solid white; /* Optional border for aesthetics */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
     }
+
+    #about {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      #about {
+        padding: 80px 50px;
+      }
+    }
+
+    #about h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    #about p {
+      max-width: 800px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    #about ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+
+    #about ul li {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+
+    #collab {
+      padding: 30px 20px;
+    }
+
+    @media (min-width: 768px) {
+      #collab {
+        padding: 50px 0;
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        justify-content: center;
+        text-align: left;
+      }
+    }
+
+    .collab-image {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .collab-image {
+        width: 450px;
+        height: 450px;
+        margin-bottom: 0;
+        margin-right: 30px;
+      }
+    }
+
+    .collab-content {
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .collab-content {
+        max-width: 600px;
+      }
+    }
+    .dynamic-text {
+      font-size: 2rem;
+      color: #D946EF; /* Magenta Pink color for dynamic text */
+      margin: 20px 0;
+      min-height: 50px;
+      font-weight: bold;
+    }
+
+
     .collab-button {
-    display: inline-block;
-    background-color: #9b59b6;
-    color: white;
-    font-size: 16px;
-    padding: 12px 25px;
-    margin: 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-  }
+      display: inline-block;
+      background-color: #9b59b6;
+      color: white;
+      font-size: 14px;
+      padding: 10px 20px;
+      margin: 5px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
 
-  .collab-button:hover {
-    background-color: #8e44ad;
-    transform: translateY(-3px);
-  }
+    @media (min-width: 768px) {
+      .collab-button {
+        font-size: 16px;
+        padding: 12px 25px;
+        margin: 10px;
+      }
+    }
 
-  .collab-button:active {
-    transform: translateY(0);
-  }
-  .img  {
-  transition: transform 0.3s ease, box-shadow 4s ease;
-}
-.img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+    @media (max-width: 767px) {
+      nav ul {
+        display: none;
+      }
 
+      .menu-toggle {
+        display: flex;
+      }
+
+      .theme-toggle {
+        display: none;
+      }
+    }
   </style>
 </head>
 
 <body>
   <nav>
     <div class="logo">
-    <img src="logo.png">
+      <img src="logo.png" alt="Logo">
     </div>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="theme-toggle">Toggle Theme</div>
     <div class="menu-toggle" id="menu-toggle">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="projects.html">My Projects</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-    <button class="theme-toggle" id="theme-toggle">Dark Theme</button>
   </nav>
 
   <div class="mobile-nav" id="mobile-nav">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="projects.html">My Projects</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 
   <section class="hero" id="home">
     <div class="hero-content">
-      <h1>Hi There! <span>👋🏻</span></h1>
+      <h1>Hi There! <span class="wave">👋🏻</span></h1>
       <h2>I'm Arpita Gupta</h2>
       <h2 class="dynamic-text" id="dynamic-text">Freelancer</h2>
       <p>I am a passionate developer eager to take on challenging projects and deliver exceptional results. Let's work together!</p>
     </div>
-      <div class="profile-container">
-      <img src="profile.jpg" alt="Profile Picture">
-      </div>
-    
-  </section>
-
-  <section id="collab" style="background: url('path-to-your-image.jpg') no-repeat center center/cover; padding: 50px 0; color: white; position: relative;">
-    <div class="container" style="display: flex; justify-content: center; align-items: center; text-align: center;">
-      <!-- Image of Freelancer in a Circle -->
-      <div style="flex: 1; text-align: left;">
-        <img src="freelance.jpeg" alt="Freelancer" style="border-radius: 50%; width: 450px; height: 450px; object-fit: cover; margin-right: 30px; border: 4px solid #c084f5;">
-      </div>
-  
-      <!-- Text and Buttons Section -->
-      <div style="flex: 2;">
-        <h1 style="font-size: 3rem; color: #c084f5;">Collaborate with Me</h1>
-        <p style="font-size: 18px; max-width: 600px; margin: 0 auto; padding: 20px;">
-          Looking for a skilled web developer to bring your project to life? I'm available for freelance projects and would love to work with you! Whether you need a portfolio, e-commerce site, or custom web solution, I can help you achieve your vision. Let's collaborate and create something amazing.
-        </p>
-        <div style="margin-top: 30px;">
-          <a href="https://www.fiverr.com/users/arpitagupta25" target="_blank" class="collab-button">Fiverr</a>
-          <a href="https://www.upwork.com/freelancers/~01f51af91c79e78799?mp_source=share" target="_blank" class="collab-button">Upwork</a>
-          <a href="https://www.freelancer.com/u/arpitagupta25" target="_blank" class="collab-button">Freelancer</a>
-          <a href="mailto:arpitagupta2504@gmail.com" class="collab-button">Email Me</a>
-        </div>
-      </div>
+    <div class="profile-container">
+      <img src="profile.jpg" alt="Profile Picture" class="profile-img">
     </div>
   </section>
-  <br>
-  <br>
-  <br>
 
   <section id="about">
-    <h1 style="font-size: 3rem;"><strong> Know Who <span style="color: #c084f5;">I 'm</span></strong></h1>
-
-
+    <h1><strong>Know Who <span style="color: #c084f5;">I'm</span></strong></h1>
     <p>
-      Hi Everyone, I am <span style="color: #6a5acd; font-weight: bold;">Arpita Gupta</span>, an enthusiastic engineering student from <strong>Mumbai</strong>
-      .  I am passionate about freelancing, particularly in web development.
+      Hi Everyone, I am <span style="color: #6a5acd; font-weight: bold;">Arpita Gupta</span>, 
+      an enthusiastic engineering student from <strong>Mumbai</strong>.
+      I am passionate about freelancing, particularly in web development.
     </p>
     <p>
-      Beyond academics, I thrive on challenges that allow me to innovate and create. <br>Some of my favorite activities include:
+      Beyond academics, I thrive on challenges that allow me to innovate and create.
+      Some of my favorite activities include:
     </p>
     <ul>
       <li>🖥️ Coding and solving problems</li>
@@ -381,71 +378,100 @@
       <li>🏋️‍♀️ Staying active through adventure</li>
     </ul>
     <p>
-      I strongly believe in the motto: 
+      I strongly believe in the motto:
       <q><em><span style="color: #9b59b6;">"Innovation is the key to unlocking a better future."</span></em></q>
     </p>
   </section>
-  
 
-  <footer>
-    &copy; Arpita Gupta. Made with Love💜.
-    
-  </footer>
+  <section id="collab">
+    <div class="container">
+      <div>
+        <img src="freelance.jpeg" alt="Freelancer" class="collab-image">
+      </div>
+      <div class="collab-content">
+        <h1>Collaborate with Me</h1>
+        <p>
+          Looking for a skilled web developer to bring your project to life? I'm available for freelance projects and would love to work with you! Whether you need a portfolio, e-commerce site, or custom web solution, I can help you achieve your vision.
+        </p>
+        <div>
+          <a href="https://www.fiverr.com/users/arpitagupta25" target="_blank" class="collab-button">Fiverr</a>
+          <a href="https://www.upwork.com/freelancers/~01f51af91c79e78799" target="_blank" class="collab-button">Upwork</a>
+          <a href="https://www.freelancer.com/u/arpitagupta25" target="_blank" class="collab-button">Freelancer</a>
+          <a href="mailto:arpitagupta2504@gmail.com" class="collab-button">Email Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
-   const roles = ["Freelancer", "Web Developer", "Open Source Contributor"];
-    let index = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    const dynamicText = document.getElementById("dynamic-text");
-    const typingSpeed = 150; // Speed for typing and erasing (uniform timing)
-
-    function typeWriter() {
-      const currentRole = roles[index];
-
-      if (isDeleting) {
-        dynamicText.textContent = currentRole.substring(0, charIndex--);
-      } else {
-        dynamicText.textContent = currentRole.substring(0, charIndex++);
-      }
-
-      // Transition conditions
-      if (!isDeleting && charIndex === currentRole.length) {
-        isDeleting = true;
-        setTimeout(typeWriter, 1000); // Pause after completing the word
-        return;
-      }
-
-      if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        index = (index + 1) % roles.length; // Move to the next role
-      }
-
-      setTimeout(typeWriter, typingSpeed); // Maintain uniform speed
-    }
-
-    typeWriter();
-
-    const themeToggle = document.getElementById("theme-toggle");
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("light-theme");
-    });
-
     const menuToggle = document.getElementById("menu-toggle");
     const mobileNav = document.getElementById("mobile-nav");
+    const body = document.body;
 
     menuToggle.addEventListener("click", () => {
-      mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
+      const isOpen = mobileNav.style.display === "flex";
+      mobileNav.style.display = isOpen ? "none" : "flex";
       menuToggle.classList.toggle("menu-opened");
+      body.style.overflow = isOpen ? "auto" : "hidden"; // Prevent scrolling when menu is open
     });
 
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileNav.getElementsByTagName("a");
+    Array.from(mobileLinks).forEach(link => {
+      link.addEventListener("click", () => {
+        mobileNav.style.display = "none";
+        menuToggle.classList.remove("menu-opened");
+        body.style.overflow = "auto";
+      });
+    });
+
+    // Close mobile menu when clicking outside
     document.addEventListener("click", (e) => {
       if (!mobileNav.contains(e.target) && !menuToggle.contains(e.target)) {
         mobileNav.style.display = "none";
         menuToggle.classList.remove("menu-opened");
+        body.style.overflow = "auto";
       }
     });
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        mobileNav.style.display = "none";
+        menuToggle.classList.remove("menu-opened");
+        body.style.overflow = "auto";
+      }
+    });
+
+    // Dynamic text animation
+    const roles = ["Freelancer", "Web Developer", "Open Source Contributor"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const dynamicText = document.getElementById("dynamic-text");
+
+    function typeWriter() {
+      const currentRole = roles[roleIndex];
+
+      if (isDeleting) {
+        dynamicText.textContent = currentRole.substring(0, charIndex--);
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      } else {
+        dynamicText.textContent = currentRole.substring(0, charIndex++);
+        if (charIndex === currentRole.length + 1) {
+          isDeleting = true;
+          setTimeout(() => typeWriter(), 1000); // Pause at the end of the word
+          return;
+        }
+      }
+
+      setTimeout(typeWriter, isDeleting ? 100 : 150);
+    }
+
+    typeWriter();
   </script>
 </body>
 
